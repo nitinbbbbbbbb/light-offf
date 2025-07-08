@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Light Offf - Stylish 9:16 Reels</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #020024, #090979, #00d4ff);
+      color: #fff;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 0 15px #00e5ffaa;
+      border-bottom: 1px solid #00e5ff55;
+    }
+
+    header h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #00f0ff;
+      text-shadow: 0 0 10px #00f0ffaa;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 15px;
+    }
+
+    button {
+      background: linear-gradient(135deg, #00f0ff, #0099ff);
+      border: none;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-weight: 600;
+      color: #000;
+      cursor: pointer;
+      box-shadow: 0 0 12px #00e5ffcc;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #0099ff, #00f0ff);
+      box-shadow: 0 0 20px #00f0ffdd;
+      transform: scale(1.05);
+    }
+
+    .video-container {
+      flex: 1;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      background: transparent;
+    }
+
+    .video {
+      scroll-snap-align: start;
+      width: 100vw;
+      max-width: 400px;
+      aspect-ratio: 9 / 16;
+      background: #000;
+      border-radius: 25px;
+      box-shadow: 0 0 25px #00d4ffcc;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.4s ease;
+      cursor: pointer;
+    }
+
+    .video:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 40px #00f0ffff;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 25px;
+      filter: drop-shadow(0 0 6px #00d4ffcc);
+      transition: filter 0.3s ease;
+    }
+
+    video:focus {
+      outline: none;
+      filter: drop-shadow(0 0 12px #00f0ffff);
+    }
+
+    footer {
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ccc;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      border-top: 1px solid #00e5ff55;
+      user-select: none;
+    }
+
+    footer h3 {
+      color: #00f0ff;
+      margin-bottom: 8px;
+      font-weight: 700;
+      text-shadow: 0 0 8px #00f0ffaa;
+    }
+
+    footer a {
+      color: #00aaff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #00f0ff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Light Offf</h1>
+    <div class="btn-group">
+      <button id="loginBtn">Login</button>
+      <button id="uploadBtn">Upload</button>
+    </div>
+  </header>
+
+  <div class="video-container" id="videoContainer">
+    <div class="video" tabindex="0">
+      <video muted loop playsinline preload="auto" tabindex="-1">
+        <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="video" tabindex="0">
+      <video muted loop playsinline preload="auto" tabindex="-1">
+        <source src="https://samplelib.com/lib/preview/mp4/sample-10s.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="video" tabindex="0">
+      <video muted loop playsinline preload="auto" tabindex="-1">
+        <source src="https://samplelib.com/lib/preview/mp4/sample-15s.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  <footer>
+    <h3>🌟 Light Offf – Where stories speak in silence</h3>
+    <p>A short video scroll platform made for creators and dreamers.</p>
+    <p>Built with ❤️ by <strong>Nitin Rawat</strong></p>
+    <p>📧 Contact: <a href="mailto:nittu.r0912@gmail.com">nittu.r0912@gmail.com</a></p>
+    <p>📍 Version 1.0 – More features coming soon...</p>
+  </footer>
+
+  <script>
+    const videos = document.querySelectorAll("video");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          video.play().catch(e => {
+            // Autoplay might be blocked; handle if needed
+            console.log("Video autoplay prevented", e);
+          });
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.75 });
+
+    videos.forEach(video => {
+      observer.observe(video);
+    });
+
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      alert("Login functionality coming soon!");
+    });
+
+    document.getElementById('uploadBtn').addEventListener('click', () => {
+      alert("Upload functionality coming soon!");
+    });
+  </script>
+
+</body>
+</html>
